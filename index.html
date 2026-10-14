@@ -179,7 +179,7 @@
       <section class="card params">
         <div class="cardhead">
           <h2>Параметры</h2>
-          <button type="button" class="btn" id="share">
+          <button type="button" class="btn" id="copyLink">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
             <span>Скопировать ссылку</span>
           </button>
@@ -280,7 +280,7 @@ function persist() {
 }
 function shareLink() {
   const url = location.origin + location.pathname + '?' + new URLSearchParams(getState()).toString();
-  const btn = $('share'), label = btn.querySelector('span');
+  const btn = $('copyLink'), label = btn.querySelector('span');
   const done = () => { btn.classList.add('ok'); label.textContent = 'Ссылка скопирована'; setTimeout(() => { btn.classList.remove('ok'); label.textContent = 'Скопировать ссылку'; }, 2000); };
   const fallback = () => {
     const box = $('linkbox'); box.hidden = false; box.value = url; box.focus(); box.select();
@@ -375,7 +375,7 @@ function render() {
 $('pay').addEventListener('input', () => { overrides = {}; render(); });
 applyState(loadState());
 buildMortgage();
-$('share').addEventListener('click', shareLink);
+$('copyLink').addEventListener('click', shareLink);
 render();
 </script>
 </body>
